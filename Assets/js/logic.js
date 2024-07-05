@@ -1,6 +1,7 @@
 // TODO: Create logic to toggle the light/dark mode styles for the page and circle. The mode should be saved to local storage.
-const moodSetter = document.querySelector('#light-mode');
+const moodSetter = document.querySelector('#toggle');
 const bodyE1 = document.querySelector('body');
+
 let page = " ";
 
 moodSetter.addEventListener('click', function() {
@@ -16,7 +17,8 @@ moodSetter.addEventListener('click', function() {
     localStorage.setItem('mode', page);
 });
 // TODO: Create functions to read and write from local storage
-function init() {
+
+function change() {
     page = localStorage.getItem('mode');
     if (page === '🌃') {
         bodyE1.classList.add('dark');
@@ -27,4 +29,4 @@ function init() {
     }
 }
 
-init()
+change()
