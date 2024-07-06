@@ -1,15 +1,20 @@
 // TODO: Create a variable that selects the main element
 const post = document.querySelector('#post');
 const back = document.querySelector('#back');
+const error = document.querySelector('#error');
 
 // TODO: Create a function that builds an element and appends it to the DOM
 let blogStorage = JSON.parse(localStorage.getItem('post')) || [];
 
+function displayMessage(type, message) {
+    error.textContent = message;
+    error.setAttribute('class', type);
+  }
 // TODO: Create a function that handles the case where there are no blog posts to display
 function renderBlog() {
     const storedPosts = blogStorage;
 
-    if (storedPosts.length === 0) {
+    if (storedPosts.length === 0) { displayMessage('error', 'No blog posts are available.')
     } else {
 
 
