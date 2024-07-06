@@ -11,7 +11,7 @@ const errorE1 = document.querySelector('#error');
 // If the form is submitted with missing data, display an 
 // error message to the user.
 
-let BlogStorage = [];
+let blogStorage = JSON.parse(localStorage.getItem('post')) || [];
 
 function displayMessage(type, message) {
   errorE1.textContent = message;
@@ -23,7 +23,7 @@ function renderLastRegistered() {
   const title = localStorage.getItem('title');
   const content = localStorage.getItem('content')
 
-  if(!username || !title || !content) {
+  if (!username || !title || !content) {
     return;
   }
 
@@ -49,13 +49,18 @@ submit.addEventListener('click', function (event) {
   } else if (content === '') {
     displayMessage('error', 'Please complete the form.');
   } else {
-    displayMessage('success', 'Registered successfully');
-  
-  localStorage.setItem('username', username);
-  localStorage.setItem('title', title);
-  localStorage.setItem('conent', content);
-  renderLastRegistered();
-}
+    
+    let blogObject = {
+      username: username,
+      title: title,
+      content: content,
+    }
+    blogStorage.push(blogObject)
+
+    localStorage.setItem('post', JSON.stringify(blogStorage));
+    renderLastRegistered();
+    redirectPage();
+  }
 
   BlogStorage.unshift({
     usernameE1: username,
@@ -68,14 +73,14 @@ submit.addEventListener('click', function (event) {
 
 renderLastRegistered();
 
-// function init() {
-//   const blog = JSON.parse(localStorage.getItem('post')) || [];
-//   BlogStorage = blog;
+function init() {
+  const blog = JSON.parse(localStorage.getItem('post')) || [];
+  BlogStorage = blog;
 
-// }
+}
 
 function updateBlog() {
-  localStorage.setItem('post', JSON.stringify(BlogStorage));
+  localStorage.setItem('post', JSON.stringify(blogStorage));
 }
 
 
@@ -84,5 +89,5 @@ let redirectURL = '';
 
 const redirectPage = function (url) {
   redirectURL = url;
-  window.location.assign(url, 'blog.html');
+  location.assign('blog.html');
 }
