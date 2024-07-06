@@ -3,11 +3,11 @@ const post = document.querySelector('#post');
 const back = document.querySelector('#back');
 
 // TODO: Create a function that builds an element and appends it to the DOM
-let Storage = [];
+let BlogStorage = [];
 
 // TODO: Create a function that handles the case where there are no blog posts to display
-function render() {
-    const storedPosts = Storage;
+function renderBlog() {
+    const storedPosts = BlogStorage;
 
     if (storedPosts.length === 0) {
         return;
@@ -34,12 +34,12 @@ function render() {
 }
 
 // TODO: Call the function to render the list of blog posts
-function pull() {
-    const blog = JSON.parse(localStorage.getItem('posts')) || [];
+function init() {
+    const blog = JSON.parse(localStorage.getItem('post')) || [];
     if (blog.length !== 0) {
-        Storage = blog;
+        BlogStorage = blog;
     }
-    render()
+    renderBlog()
 }
 
 back.addEventListener('click', function (event) {
@@ -47,7 +47,7 @@ back.addEventListener('click', function (event) {
     window.location.assign('index.html');
 });
 
-pull()
+init()
 
 
 

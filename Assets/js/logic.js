@@ -18,7 +18,7 @@ moodSetter.addEventListener('click', function() {
 });
 // TODO: Create functions to read and write from local storage
 
-function change() {
+function init() {
     page = localStorage.getItem('mode');
     if (page === '🌃') {
         bodyE1.classList.add('dark');
@@ -29,4 +29,4 @@ function change() {
     }
 }
 
-change()
+init()
