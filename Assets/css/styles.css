@@ -8,24 +8,29 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html {
+  background-color: var(--blue-color);
+}
 #nav {
  display: flex;
  justify-content: space-evenly;
+ flex-direction: column;
  align-items: center;
  color: var(--dark);
  padding: 1px;
 } 
 
 #nav ul {
-  list-style: none;
+  list-style: circle;
   display: flex;
+  flex-direction: column;
   font-weight: bolder;
 }
 
 html {
   height: 100%;
 }
+
 
 body {
   min-height: 100%;
@@ -66,7 +71,7 @@ ul {
   Universal
 */
 :root {
-  --light: #fff;
+  --light: #ffffff;
   --light-accent: #f9f9fb;
   --dark: #000;
   --dark-accent: #222;
@@ -76,6 +81,7 @@ ul {
   --disabled: #aaa;
   --error: #ff0022;
   --circle-color: #ffb100;
+  --blue-color: rgb(152, 152, 236);
 }
 
 * {
